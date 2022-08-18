@@ -13,7 +13,7 @@ type book struct {
     ID     string  `json:"id"`
     Title  string  `json:"title"`
     Author string  `json:"author"`
-    Cost  float64 `json:"price"`
+    Cost  float64 `json:"cost"`
     Quantity int `json:"qty"`
     TotalCheckedOut int `json:"total_checked_out"`
     Available bool `json:"available"`
