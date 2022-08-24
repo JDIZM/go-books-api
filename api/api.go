@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"strings"
 
 	"errors"
 
@@ -38,7 +39,7 @@ func getBookById(id string) (*book, error) {
             return &books[i], nil
         }
     }
-    return nil, errors.New("book now found")
+    return nil, errors.New("book not found")
 }
 
 // bookById returns a book with an id
@@ -59,6 +60,12 @@ func createBook(c *gin.Context) {
     var newBook book
 
     if err := c.BindJSON(&newBook); err != nil {
+        c.IndentedJSON(http.StatusBadRequest, gin.H{ "error": err })
+        return
+    }
+
+    if strings.Count(newBook.ID, "")  == 1 {
+        c.IndentedJSON(http.StatusBadRequest, gin.H{ "error": "id cannot be empty" })
         return
     }
 
