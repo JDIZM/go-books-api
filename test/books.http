@@ -1,0 +1,27 @@
+
+
+
+###
+# @name getBooks
+GET http://localhost:8080/books HTTP/1.1
+
+
+###
+# @name getBook
+GET http://localhost:8080/book/1 HTTP/1.1
+
+
+###
+# @name createBook
+POST http://localhost:8080/book HTTP/1.1
+content-type: application/json
+
+{
+    "id": "7",
+    "title": "Some Book Title",
+    "author": "John Smith",
+    "cost": 40.00,
+    "qty": 3,
+    "total_checked_out": 0,
+    "available": "true"
+}
